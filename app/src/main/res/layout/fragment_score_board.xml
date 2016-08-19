@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:padding="10dp"
-        android:text="100"
+        android:text="0"
         android:id="@+id/totalrun_txt"/>
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:padding="10dp"
-        android:text="11"
+        android:text="0"
         android:id="@+id/totalwkt_txt"/>
 </LinearLayout>
 
@@ -77,8 +77,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25dp"
+            android:text="0"
             android:layout_margin="2dp"
-            android:text="11"
             android:id="@+id/totalover_txt" />
         <TextView
             android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25dp"
-            android:text="5"
+            android:text="0"
             android:layout_margin="2dp"
             android:id="@+id/totalball_txt" />
     </LinearLayout>
