@@ -52,6 +52,10 @@ public class FragmentGameSelector extends Fragment {
         ArrayAdapter<String> overAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, overList);
         overAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         over.setAdapter(overAdapter);
+
+        battingTeam.setSelection(0);
+//        bowlingTeam.getAdapter().get
+
         return root;
     }
 }
