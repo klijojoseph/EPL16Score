@@ -48,5 +48,5 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-
+// commit sample 05
 }
