@@ -66,21 +66,14 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_01_currentBall =0;
                         EPLConstants.innings_01_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_01_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_01_currentOver);
-                    balls.setText(""+EPLConstants.innings_01_currentBall);
-                    wickets.setText(""+EPLConstants.innings_01_currentTotalWickets);
                 }else if(innings.getInningsNumber()== EPLConstants.SECOND_INNINGS){
                     EPLConstants.innings_02_currentBall++;
                     if(EPLConstants.innings_02_currentBall==6){
                         EPLConstants.innings_02_currentBall =0;
                         EPLConstants.innings_02_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_02_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_02_currentOver);
-                    balls.setText(""+EPLConstants.innings_02_currentBall);
-                    wickets.setText(""+EPLConstants.innings_02_currentTotalWickets);
                 }
+                updateScore(innings.getInningsNumber());
             }
         });
         oneRun.setOnClickListener(new View.OnClickListener() {
@@ -93,10 +86,6 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_01_currentBall =0;
                         EPLConstants.innings_01_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_01_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_01_currentOver);
-                    balls.setText(""+EPLConstants.innings_01_currentBall);
-                    wickets.setText(""+EPLConstants.innings_01_currentTotalWickets);
                 }else if(innings.getInningsNumber()== EPLConstants.SECOND_INNINGS){
                     EPLConstants.innings_02_currentTotalRuns+=1;
                     EPLConstants.innings_02_currentBall++;
@@ -104,11 +93,8 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_02_currentBall =0;
                         EPLConstants.innings_02_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_02_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_02_currentOver);
-                    balls.setText(""+EPLConstants.innings_02_currentBall);
-                    wickets.setText(""+EPLConstants.innings_02_currentTotalWickets);
                 }
+                updateScore(innings.getInningsNumber());
             }
         });
         twoRun.setOnClickListener(new View.OnClickListener() {
@@ -121,10 +107,6 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_01_currentBall =0;
                         EPLConstants.innings_01_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_01_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_01_currentOver);
-                    balls.setText(""+EPLConstants.innings_01_currentBall);
-                    wickets.setText(""+EPLConstants.innings_01_currentTotalWickets);
                 }else if(innings.getInningsNumber()== EPLConstants.SECOND_INNINGS){
                     EPLConstants.innings_02_currentTotalRuns+=2;
                     EPLConstants.innings_02_currentBall++;
@@ -132,11 +114,8 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_02_currentBall =0;
                         EPLConstants.innings_02_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_02_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_02_currentOver);
-                    balls.setText(""+EPLConstants.innings_02_currentBall);
-                    wickets.setText(""+EPLConstants.innings_02_currentTotalWickets);
                 }
+                updateScore(innings.getInningsNumber());
             }
         });
         fourRun.setOnClickListener(new View.OnClickListener() {
@@ -149,10 +128,6 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_01_currentBall =0;
                         EPLConstants.innings_01_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_01_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_01_currentOver);
-                    balls.setText(""+EPLConstants.innings_01_currentBall);
-                    wickets.setText(""+EPLConstants.innings_01_currentTotalWickets);
                 }else if(innings.getInningsNumber()== EPLConstants.SECOND_INNINGS){
                     EPLConstants.innings_02_currentTotalRuns+=4;
                     EPLConstants.innings_02_currentBall++;
@@ -160,11 +135,8 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_02_currentBall =0;
                         EPLConstants.innings_02_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_02_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_02_currentOver);
-                    balls.setText(""+EPLConstants.innings_02_currentBall);
-                    wickets.setText(""+EPLConstants.innings_02_currentTotalWickets);
                 }
+                updateScore(innings.getInningsNumber());
             }
         });
 
@@ -178,10 +150,6 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_01_currentBall =0;
                         EPLConstants.innings_01_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_01_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_01_currentOver);
-                    balls.setText(""+EPLConstants.innings_01_currentBall);
-                    wickets.setText(""+EPLConstants.innings_01_currentTotalWickets);
                 }else if(innings.getInningsNumber()== EPLConstants.SECOND_INNINGS){
                     EPLConstants.innings_02_currentTotalRuns+=1;
 //                    EPLConstants.innings_02_currentBall++;
@@ -189,11 +157,8 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_02_currentBall =0;
                         EPLConstants.innings_02_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_02_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_02_currentOver);
-                    balls.setText(""+EPLConstants.innings_02_currentBall);
-                    wickets.setText(""+EPLConstants.innings_02_currentTotalWickets);
                 }
+                updateScore(innings.getInningsNumber());
             }
         });
 
@@ -207,10 +172,6 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_01_currentBall =0;
                         EPLConstants.innings_01_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_01_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_01_currentOver);
-                    balls.setText(""+EPLConstants.innings_01_currentBall);
-                    wickets.setText(""+EPLConstants.innings_01_currentTotalWickets);
                 }else if(innings.getInningsNumber()== EPLConstants.SECOND_INNINGS){
                     EPLConstants.innings_02_currentTotalWickets+=1;
                     EPLConstants.innings_02_currentBall++;
@@ -218,11 +179,8 @@ public class FragmentMainScoreBoard extends Fragment {
                         EPLConstants.innings_02_currentBall =0;
                         EPLConstants.innings_02_currentOver++;
                     }
-                    runs.setText(""+EPLConstants.innings_02_currentTotalRuns);
-                    over.setText(""+EPLConstants.innings_02_currentOver);
-                    balls.setText(""+EPLConstants.innings_02_currentBall);
-                    wickets.setText(""+EPLConstants.innings_02_currentTotalWickets);
                 }
+                updateScore(innings.getInningsNumber());
             }
         });
 
@@ -232,7 +190,19 @@ public class FragmentMainScoreBoard extends Fragment {
         return root;
     }
 
-
+    public void updateScore(int innings){
+        if(innings== EPLConstants.FIRST_INNINGS){
+            runs.setText(""+EPLConstants.innings_01_currentTotalRuns);
+            over.setText(""+EPLConstants.innings_01_currentOver);
+            balls.setText(""+EPLConstants.innings_01_currentBall);
+            wickets.setText(""+EPLConstants.innings_01_currentTotalWickets);
+        }else if(innings== EPLConstants.SECOND_INNINGS){
+            runs.setText(""+EPLConstants.innings_02_currentTotalRuns);
+            over.setText(""+EPLConstants.innings_02_currentOver);
+            balls.setText(""+EPLConstants.innings_02_currentBall);
+            wickets.setText(""+EPLConstants.innings_02_currentTotalWickets);
+        }
+    }
 
     public static class MatchInnings implements Serializable {
         int inningsNumber;
