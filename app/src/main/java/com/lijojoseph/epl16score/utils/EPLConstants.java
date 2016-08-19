@@ -14,4 +14,16 @@ public class EPLConstants {
     public static String innings_01_Bowling ="";
     public static String innings_02_Bowling ="";
 
+    public static int innings_01_currentOver = 0;
+    public static int innings_01_currentBall = 0;
+
+    public static int innings_01_currentTotalRuns = 0;
+    public static int innings_01_currentTotalWickets = 0;
+
+    public static int innings_02_currentOver = 0;
+    public static int innings_02_currentBall = 0;
+
+    public static int innings_02_currentTotalRuns = 0;
+    public static int innings_02_currentTotalWickets = 0;
+
 }
