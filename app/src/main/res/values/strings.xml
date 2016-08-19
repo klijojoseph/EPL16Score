@@ -8,4 +8,18 @@
     <string name="team_b">Atholokamz</string>
     <string name="team_c">Alambanz</string>
     <string name="team_d">Winnerz</string>
+
+
+    <string name="run0">0</string>
+    <string name="run1">1</string>
+    <string name="run2">2</string>
+    <string name="run4">4</string>
+    <string name="noball">NB</string>
+    <string name="wide">WID</string>
+    <string name="wicket">WKT</string>
+    <string name="phase">PHASE</string>
+    <string name="chance">CHANCE</string>
+    <string name="over">OVER</string>
+    <string name="back">BACK</string>
+
 </resources>
