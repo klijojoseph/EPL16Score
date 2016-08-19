@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_batting_team"
+        android:gravity="left"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:text="@string/batting_team"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/team1_spinner"
+        android:layout_below="@+id/label_batting_team"
+        android:padding="10dp"/>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/im_vs_logo"
+        android:layout_below="@+id/team1_spinner"
+        android:background="@drawable/vs"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_bowling_team"
+        android:layout_below="@+id/im_vs_logo"
+        android:gravity="left"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:text="@string/bowling_team"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:id="@+id/team2_spinner"
+        android:layout_below="@+id/label_bowling_team"
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:id="@+id/over_spinner"
+        android:layout_below="@+id/team2_spinner"
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/over_spinner"
+        android:text="@string/sumbit"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:padding="@dimen/activity_horizontal_margin"/>
+</RelativeLayout>

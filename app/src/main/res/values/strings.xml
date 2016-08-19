@@ -3,4 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="sumbit">Submit</string>
     <string name="batting_team">Batting Team</string>
+    <string name="bowling_team">Bowling Team</string>
+    <string name="team_a">Machanz 11</string>
+    <string name="team_b">Atholokamz</string>
+    <string name="team_c">Alambanz</string>
+    <string name="team_d">Winnerz</string>
 </resources>
