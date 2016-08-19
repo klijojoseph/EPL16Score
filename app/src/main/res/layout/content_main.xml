@@ -10,17 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.lijojoseph.epl16score.MainActivity"
-    android:gravity="center"
     tools:showIn="@layout/activity_main">
-<LinearLayout
+<TextView
     android:layout_width="match_parent"
     android:gravity="center"
     android:layout_gravity="center"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_alignParentTop="true"
+    android:text=""/>
 <Spinner
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="wrap_content"
     android:id="@+id/team1_spinner"
     android:layout_marginBottom="10dp"
     android:padding="10dp"
@@ -36,7 +36,7 @@
     <Spinner
         android:layout_width="match_parent"
         android:id="@+id/team2_spinner"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
         >
@@ -46,10 +46,10 @@
     android:id="@+id/submit_btn"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:text="@string/Sumbit"
+    android:text="@string/sumbit"
     android:layout_marginBottom="10dp"
     android:padding="10dp"/>
-   </LinearLayout>
+
 
 
 
