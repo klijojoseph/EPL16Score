@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">EPL16Score</string>
     <string name="action_settings">Settings</string>
-    <string name="sumbit">Submit</string>
+    <string name="sumbit">START GAME</string>
     <string name="batting_team">Batting Team</string>
     <string name="bowling_team">Bowling Team</string>
     <string name="team_a">Machanz 11</string>
@@ -21,5 +21,52 @@
     <string name="chance">CHANCE</string>
     <string name="over">OVER</string>
     <string name="back">BACK</string>
+    <string name="playername">Player Name</string>
+    <string name="ok">OK</string>
+    <string name="bowler">Bowler</string>
+    <string name="batsman">Batsman</string>
+    <string name="nextbatsman">Next Batsman</string>
+
+    <string-array name="playerslist">
+        <item>Sushen SJ</item>
+        <item>Pradeep</item>
+        <item>Arun A</item>
+        <item>Bibin Babu</item>
+        <item>Mashesh CS</item>
+        <item>Lijo Joseph</item>
+        <item>Sojan C Das</item>
+        <item>Santhosh</item>
+        <item>Jefin</item>
+
+        <item>Sreejith S</item>
+        <item>Bala Ganeshan V</item>
+        <item>Ershad J</item>
+        <item>Rojish </item>
+        <item>Vishnu</item>
+        <item>Praveen</item>
+        <item>Jayesh</item>
+        <item>Reagan</item>
+        <item>Sumesh</item>
+
+        <item>Johnson</item>
+        <item>Sreejith Sasidharan</item>
+        <item>Vijin</item>
+        <item>Mukesh</item>
+        <item>Joseph</item>
+        <item>Binoj</item>
+        <item>Jikku</item>
+        <item>Amaljith</item>
+        <item>Aneesh</item>
+
+        <item>Hari</item>
+        <item>Abilash</item>
+        <item>Kiran K</item>
+        <item>Mathew </item>
+        <item>Prakash</item>
+        <item>Rajeev</item>
+        <item>Deepu</item>
+        <item>KiranLAl</item>
+        <item>Deepak</item>
+    </string-array>
 
 </resources>

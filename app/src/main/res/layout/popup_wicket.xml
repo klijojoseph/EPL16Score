@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android='http://schemas.android.com/apk/res/android'
+    android:layout_width='match_parent'
+    android:layout_height='match_parent'
+    android:orientation='vertical'
+    android:padding='10dp' >
+
+    <TextView
+        android:layout_width='match_parent'
+        android:layout_height='wrap_content'
+        android:textSize="20dp"
+        android:background="@drawable/rounded_corner"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+       android:text="@string/nextbatsman"
+        android:singleLine='true' >
+
+        <requestFocus />
+    </TextView>
+
+    <EditText
+        android:id='@+id/wkt_popedit'
+        android:layout_width='match_parent'
+        android:layout_height='wrap_content'
+        android:hint='@string/playername'
+        android:textSize="30dp"
+        android:singleLine="true"
+        android:background="@drawable/rounded_corner"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+       >
+
+        <requestFocus />
+    </EditText>
+
+    <RelativeLayout
+        android:layout_width='match_parent'
+        android:gravity="center"
+        android:layout_height='wrap_content' >
+
+        <Button
+            android:id='@+id/wkt'
+            android:layout_width='120dp'
+            android:textSize="20dp"
+            android:background="@drawable/background"
+            android:layout_marginTop="10dp"
+            android:layout_height='wrap_content'
+            android:text='@string/ok' />
+
+    </RelativeLayout>
+
+</LinearLayout>

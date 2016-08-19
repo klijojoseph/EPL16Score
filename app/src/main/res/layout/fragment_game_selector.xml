@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/label_batting_team"
         android:gravity="left"
+        android:textSize="20dp"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_margin="@dimen/activity_horizontal_margin"
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/team1_spinner"
+        android:textSize="20dp"
         android:background="@drawable/rounded_corner"
         android:layout_below="@+id/label_batting_team"
         android:layout_margin="10dp"/>
@@ -33,6 +35,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/label_bowling_team"
         android:layout_below="@+id/im_vs_logo"
+        android:textSize="20dp"
         android:gravity="left"
         android:layout_gravity="center"
         android:layout_margin="@dimen/activity_horizontal_margin"
@@ -43,6 +46,7 @@
         android:id="@+id/team2_spinner"
         android:layout_below="@+id/label_bowling_team"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
         android:background="@drawable/rounded_corner"
         android:layout_margin="10dp"/>
        <TextView
@@ -51,14 +55,17 @@
            android:id="@+id/label_overs"
            android:layout_below="@+id/team2_spinner"
            android:gravity="left"
+           android:textSize="20dp"
            android:layout_gravity="center"
            android:layout_margin="@dimen/activity_horizontal_margin"
-           android:text="@string/bowling_team"/>
+           android:text="@string/over"/>
     <Spinner
         android:layout_width="match_parent"
         android:id="@+id/over_spinner"
         android:layout_below="@+id/label_overs"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+
         android:background="@drawable/rounded_corner"
         android:layout_margin="10dp"/>
     <Button
@@ -67,6 +74,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/over_spinner"
         android:text="@string/sumbit"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background"
+        android:textSize="20dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:padding="@dimen/activity_horizontal_margin"/>
