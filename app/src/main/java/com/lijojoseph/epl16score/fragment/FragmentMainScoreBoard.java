@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class FragmentMainScoreBoard extends Fragment {
     private TextView wickets;
     private TextView over;
     private TextView balls;
+    private PopupWindow popupWindow;
 
 
     public static FragmentMainScoreBoard newInstance(MatchInnings innings){
@@ -50,6 +52,7 @@ public class FragmentMainScoreBoard extends Fragment {
          wickets= (TextView) root.findViewById(R.id.totalwkt_txt);
          over= (TextView) root.findViewById(R.id.totalover_txt);
          balls= (TextView) root.findViewById(R.id.totalball_txt);
+        popupWindow = new PopupWindow(getContext());
 
         final Button zeroRun = (Button) root.findViewById(R.id.run0_btn);
         final Button oneRun = (Button) root.findViewById(R.id.run1_btn);
@@ -177,9 +180,10 @@ public class FragmentMainScoreBoard extends Fragment {
             public void onClick(View view) {
 
 //add wicket popup :bibin
-                android.support.v4.app.FragmentManager wicketfragmentmgr=getFragmentManager();
-                FragmentWicket fragmentWicket=new FragmentWicket();
-                fragmentWicket.show(wicketfragmentmgr,null);
+//                android.support.v4.app.FragmentManager wicketfragmentmgr=getFragmentManager();
+//                FragmentWicket fragmentWicket=new FragmentWicket();
+                FragmentWicket.newInstance().show(getChildFragmentManager(),null);
+
 
  //end
                 if(innings.getInningsNumber()== EPLConstants.FIRST_INNINGS){

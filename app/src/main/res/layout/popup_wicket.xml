@@ -39,7 +39,7 @@
         android:layout_height='wrap_content' >
 
         <Button
-            android:id='@+id/wkt'
+            android:id='@+id/wkt_ok'
             android:layout_width='120dp'
             android:textSize="20dp"
             android:background="@drawable/background"
