@@ -26,6 +26,8 @@
     <string name="bowler">Bowler</string>
     <string name="batsman">Batsman</string>
     <string name="nextbatsman">Next Batsman</string>
+    <string name="nextover">NEXT OVER</string>
+    <string name="reset">Reset</string>
 
     <string-array name="playerslist">
         <item>Sushen SJ</item>

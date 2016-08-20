@@ -1,16 +1,20 @@
 package com.lijojoseph.epl16score.fragment;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.ButtonBarLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lijojoseph.epl16score.R;
+import com.lijojoseph.epl16score.popup_fragments.FragmentNoball;
+import com.lijojoseph.epl16score.popup_fragments.FragmentOverChange;
+import com.lijojoseph.epl16score.popup_fragments.FragmentWicket;
 import com.lijojoseph.epl16score.utils.EPLConstants;
 
 import java.io.Serializable;
@@ -54,7 +58,13 @@ public class FragmentMainScoreBoard extends Fragment {
 
         final Button wideButton = (Button) root.findViewById(R.id.wide_btn);
         final Button wicketButton = (Button) root.findViewById(R.id.wicket_btn);
+//add phase,noball,net over buttons :bibin
+        final Button noballButton=(Button)root.findViewById(R.id.noball_btn) ;
+        final Button nextoverButton=(Button)root.findViewById(R.id.overchange_btn) ;
+        final Button phaseButton=(Button)root.findViewById(R.id.phase_btn) ;
 
+//add waring alert sound for phase ball:bibin
+       final MediaPlayer mediaPlayer=MediaPlayer.create(getContext(),R.raw.sound);
 
 
         zeroRun.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +175,15 @@ public class FragmentMainScoreBoard extends Fragment {
         wicketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//add wicket popup :bibin
+                android.support.v4.app.FragmentManager wicketfragmentmgr=getFragmentManager();
+                FragmentWicket fragmentWicket=new FragmentWicket();
+                fragmentWicket.show(wicketfragmentmgr,null);
+
+ //end
                 if(innings.getInningsNumber()== EPLConstants.FIRST_INNINGS){
+
                     EPLConstants.innings_01_currentTotalWickets+=1;
                     EPLConstants.innings_01_currentBall++;
                     if(EPLConstants.innings_01_currentBall==6){
@@ -184,8 +202,37 @@ public class FragmentMainScoreBoard extends Fragment {
             }
         });
 
+//Noball button click :Bibin Babu
+        noballButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.support.v4.app.FragmentManager noballfragmentmgr=getFragmentManager();
+                FragmentNoball fragmentNoball=new FragmentNoball();
+                fragmentNoball.show(noballfragmentmgr,null);
+            }
+        });
 
 
+//Create new Button Next Over and click :Bibin
+        nextoverButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.support.v4.app.FragmentManager fragmentManager=getFragmentManager();
+                FragmentOverChange fragmentOverChange=new FragmentOverChange();
+                fragmentOverChange.show(fragmentManager,null);
+            }
+        });
+
+//Phase Button click:bibin
+        phaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//phase ball warnning:bibin
+                mediaPlayer.start();
+                Toast.makeText(getContext(),"Phase ball",Toast.LENGTH_SHORT).show();
+            }
+        });
+//end
         teamName.setText(innings.getTeam01());
         return root;
     }

@@ -3,35 +3,35 @@
     android:layout_width='match_parent'
     android:layout_height='match_parent'
     android:orientation='vertical'
-    android:padding='10dp' >
+    android:padding='5dp' >
 
     <TextView
         android:layout_width='match_parent'
         android:layout_height='wrap_content'
         android:textSize="20dp"
-        android:background="@drawable/rounded_corner"
         android:layout_margin="10dp"
         android:layout_marginTop="20dp"
-       android:text="@string/nextbatsman"
+        android:text="@string/nextbatsman"
         android:singleLine='true' >
 
         <requestFocus />
     </TextView>
-
-    <EditText
-        android:id='@+id/wkt_popedit'
+<!--change edittext to auto complete textview :bibin-->
+    <AutoCompleteTextView
+        android:id="@+id/wkt_poptxt"
+        android:hint='@string/playername'
+        android:layout_margin="10dp"
         android:layout_width='match_parent'
         android:layout_height='wrap_content'
-        android:hint='@string/playername'
-        android:textSize="30dp"
+        android:textSize="20dp"
+        android:padding="10dp"
         android:singleLine="true"
         android:background="@drawable/rounded_corner"
-        android:layout_margin="10dp"
         android:layout_marginTop="10dp"
        >
 
         <requestFocus />
-    </EditText>
+    </AutoCompleteTextView>
 
     <RelativeLayout
         android:layout_width='match_parent'
