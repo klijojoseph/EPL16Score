@@ -18,6 +18,10 @@ import com.lijojoseph.epl16score.R;
  */
 public class FragmentWicket extends DialogFragment {
 
+    private FragmentWicket() {
+
+    }
+
     public static FragmentWicket newInstance(){
         FragmentWicket fragment = new FragmentWicket();
         return fragment;

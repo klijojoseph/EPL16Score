@@ -34,45 +34,34 @@
         android:text='@string/run1'
         android:id="@+id/noball_run1" />
 
-    <Button
-
-        android:layout_width='wrap_content'
-        android:textSize="20dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/background"
-        android:layout_marginTop="10dp"
-        android:layout_height='wrap_content'
-        android:text='@string/run2'
-        android:id="@+id/noball_run2" />
-
-    <Button
-
-        android:layout_width='wrap_content'
-        android:textSize="20dp"
-        android:layout_margin="2dp"
-        android:background="@drawable/background"
-        android:layout_marginTop="10dp"
-        android:layout_height='wrap_content'
-        android:text='@string/run4'
-        android:id="@+id/noball_run4" />
-
-
     </LinearLayout>
     <LinearLayout
-        android:layout_width='match_parent'
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_below="@id/lay1"
-        android:layout_height='wrap_content' >
-
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
         <Button
-            android:id="@+id/noball_okbtn"
-            android:layout_width='120dp'
+
+            android:layout_width='wrap_content'
             android:textSize="20dp"
+            android:layout_margin="2dp"
             android:background="@drawable/background"
             android:layout_marginTop="10dp"
             android:layout_height='wrap_content'
-            android:text='@string/ok' />
+            android:text='@string/run2'
+            android:id="@+id/noball_run2" />
 
+        <Button
+
+            android:layout_width='wrap_content'
+            android:textSize="20dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/background"
+            android:layout_marginTop="10dp"
+            android:layout_height='wrap_content'
+            android:text='@string/run4'
+            android:id="@+id/noball_run4" />
     </LinearLayout>
 
 </LinearLayout>
