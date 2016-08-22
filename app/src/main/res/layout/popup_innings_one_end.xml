@@ -4,16 +4,9 @@
     android:layout_height='match_parent'
     android:orientation='vertical'
     android:padding='5dp' >
+
     <TextView
-        android:layout_width='match_parent'
-        android:layout_height='wrap_content'
-        android:textSize="20dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/out"
-        android:singleLine='true' />
-    <TextView
-        android:id="@+id/out"
+        android:id="@+id/tragetruns"
         android:layout_width='match_parent'
         android:layout_height='wrap_content'
         android:textSize="20dp"
@@ -22,32 +15,15 @@
         android:singleLine='true' />
 
     <TextView
+        android:id="@+id/tragetover"
         android:layout_width='match_parent'
         android:layout_height='wrap_content'
         android:textSize="20dp"
         android:layout_margin="10dp"
         android:layout_marginTop="20dp"
-        android:text="@string/nextbatsman"
         android:singleLine='true' >
 
-        <requestFocus />
     </TextView>
-<!--change edittext to auto complete textview :bibin-->
-    <AutoCompleteTextView
-        android:id="@+id/wkt_poptxt"
-        android:hint='@string/playername'
-        android:layout_margin="10dp"
-        android:layout_width='match_parent'
-        android:layout_height='wrap_content'
-        android:textSize="20dp"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:background="@drawable/rounded_corner"
-        android:layout_marginTop="10dp"
-       >
-
-        <requestFocus />
-    </AutoCompleteTextView>
 
     <RelativeLayout
         android:layout_width='match_parent'
@@ -55,7 +31,7 @@
         android:layout_height='wrap_content' >
 
         <Button
-            android:id='@+id/wkt_ok'
+            android:id='@+id/inningendok_btn'
             android:layout_width='120dp'
             android:textSize="20dp"
             android:background="@drawable/background"

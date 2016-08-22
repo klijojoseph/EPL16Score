@@ -12,8 +12,9 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lijojoseph.epl16score.MainActivity;
 import com.lijojoseph.epl16score.R;
+import com.lijojoseph.epl16score.popup_fragments.FragmentInningsOneEnd;
+import com.lijojoseph.epl16score.popup_fragments.FragmentMatchEnd;
 import com.lijojoseph.epl16score.popup_fragments.FragmentNoball;
 import com.lijojoseph.epl16score.popup_fragments.FragmentOverChange;
 import com.lijojoseph.epl16score.popup_fragments.FragmentWicket;
@@ -177,6 +178,8 @@ public class FragmentMainScoreBoard extends Fragment {
                 balls.setText(""+0 );
                 wickets.setText(""+0);
                 EPLConstants.chanceList.clear();
+//add fragment Innings end_fragment:bibin
+                FragmentInningsOneEnd.newInstance().show(getFragmentManager(),null);
                 Toast.makeText(FragmentMainScoreBoard.this.getContext(),
                         "Innings End ,Target : "+(EPLConstants.innings_01_currentTotalRuns+1),
                         Toast.LENGTH_SHORT).show();
@@ -185,9 +188,8 @@ public class FragmentMainScoreBoard extends Fragment {
                 innings.setOvers(innings.getOvers());
                 innings.setTeam01(EPLConstants.innings_02_Batting);
                 innings.setTeam02(EPLConstants.innings_02_Bowling);
-
                 teamName.setText(innings.getTeam01());
-                FragmentOverChange.newInstace().show(getFragmentManager(), null);
+//remove over change fragment and place it in Innings fragment:bibin
             }
         } else if (innings.getInningsNumber() == EPLConstants.SECOND_INNINGS) {
             EPLConstants.innings_02_currentTotalRuns += runsTaken;
@@ -212,17 +214,18 @@ public class FragmentMainScoreBoard extends Fragment {
                 over.setText("");
                 balls.setText("" );
                 wickets.setText("");
-                String winner="";
+             /*   String winner="";
                 if(EPLConstants.innings_01_currentTotalRuns > EPLConstants.innings_02_currentTotalRuns)
                     winner = EPLConstants.innings_01_Batting;
                 else
-                    winner = EPLConstants.innings_02_Batting;
-
-                Toast.makeText(FragmentMainScoreBoard.this.getContext(),
+                    winner = EPLConstants.innings_02_Batting;*/
+                FragmentMatchEnd.newInstance().show(getFragmentManager(),null);
+              /*  Toast.makeText(FragmentMainScoreBoard.this.getContext(),
                         "Match End ,Winner : "+winner,
-                        Toast.LENGTH_SHORT).show();
-                EPLConstants.clearAll();
-                ((MainActivity)getActivity()).replaceFragment(FragmentGameSelector.newInstance());
+                        Toast.LENGTH_SHORT).show();*/
+           //     EPLConstants.clearAll();
+           //     ((MainActivity)getActivity()).replaceFragment(FragmentGameSelector.newInstance());
+            //    EPLConstants.clearAll();
             }
         }
     }

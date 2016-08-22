@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.lijojoseph.epl16score.R;
 import com.lijojoseph.epl16score.utils.EPLConstants;
@@ -34,10 +35,14 @@ public class FragmentWicket extends DialogFragment {
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         View root = inflater.inflate(R.layout.popup_wicket, container, false);
 
+        final TextView popwkt=(TextView)root.findViewById(R.id.out);
         final Button okButton = (Button) root.findViewById(R.id.wkt_ok);
         final AutoCompleteTextView bowlerAutoTxt = (AutoCompleteTextView) root.findViewById(R.id.wkt_poptxt);
         final String[] name = getResources().getStringArray(R.array.playerslist);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, name);
+
+//wickted batsman name:bibin
+        popwkt.setText(EPLConstants.currentBatsMan);
 
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override

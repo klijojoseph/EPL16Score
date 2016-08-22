@@ -93,6 +93,7 @@ public class FragmentGameSelector extends Fragment {
                 EPLConstants.innings_01_Bowling = bowlingTeam.getSelectedItem().toString();
                 EPLConstants.innings_02_Bowling = battingTeam.getSelectedItem().toString();
 
+             //   EPLConstants.clearAll();
                 FragmentMainScoreBoard.MatchInnings innings = new FragmentMainScoreBoard.MatchInnings();
                 innings.setInningsNumber(EPLConstants.FIRST_INNINGS);
                 innings.setOvers(Integer.parseInt(over.getSelectedItem().toString()));

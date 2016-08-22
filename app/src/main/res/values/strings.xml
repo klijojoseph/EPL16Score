@@ -28,6 +28,10 @@
     <string name="nextbatsman">Next Batsman</string>
     <string name="nextover">NEXT OVER</string>
     <string name="reset">Reset</string>
+    <string name="out">Out</string>
+    <string name="wkt">Wicket</string>
+    <string name="endinnings">Innings 01 End</string>
+    <string name="matchend">Match End</string>
 
     <string-array name="playerslist">
         <item>Sushen SJ</item>
