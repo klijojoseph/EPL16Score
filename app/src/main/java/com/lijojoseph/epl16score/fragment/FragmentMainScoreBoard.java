@@ -66,6 +66,7 @@ public class FragmentMainScoreBoard extends Fragment {
 //add phase,noball,net over buttons :bibin
         final Button noballButton = (Button) root.findViewById(R.id.noball_btn);
         final Button phaseButton = (Button) root.findViewById(R.id.phase_btn);
+        final Button chanceButton = (Button) root.findViewById(R.id.chance_btn);
 
 //add waring alert sound for phase ball:bibin
         final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.sound);
@@ -123,6 +124,19 @@ public class FragmentMainScoreBoard extends Fragment {
             }
         });
 
+        chanceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(EPLConstants.chanceList.contains(EPLConstants.currentBatsMan)){
+                    Toast.makeText(getContext(),EPLConstants.currentBatsMan+" is Out ",Toast.LENGTH_SHORT).show();
+                    wicketButton.performClick();
+                }else{
+                    EPLConstants.chanceList.add(EPLConstants.currentBatsMan);
+                    updateScore(innings,0,false,false);
+                }
+            }
+        });
+
 
 //Phase Button click:bibin
         phaseButton.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +176,7 @@ public class FragmentMainScoreBoard extends Fragment {
                 over.setText(""+0);
                 balls.setText(""+0 );
                 wickets.setText(""+0);
+                EPLConstants.chanceList.clear();
                 Toast.makeText(FragmentMainScoreBoard.this.getContext(),
                         "Innings End ,Target : "+(EPLConstants.innings_01_currentTotalRuns+1),
                         Toast.LENGTH_SHORT).show();

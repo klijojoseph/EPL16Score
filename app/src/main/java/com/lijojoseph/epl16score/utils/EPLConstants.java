@@ -1,5 +1,7 @@
 package com.lijojoseph.epl16score.utils;
 
+import java.util.ArrayList;
+
 /**
  * Created by lijo.j on 19-Aug-2016.
  */
@@ -29,6 +31,8 @@ public class EPLConstants {
     public static int innings_02_currentTotalRuns = 0;
     public static int innings_02_currentTotalWickets = 0;
 
+    public static ArrayList<String> chanceList = new ArrayList<>();
+
     public static void clearAll(){
 
          innings_01_Batting ="";
@@ -51,6 +55,8 @@ public class EPLConstants {
 
          innings_02_currentTotalRuns = 0;
          innings_02_currentTotalWickets = 0;
+
+        chanceList.clear();
 
     }
 

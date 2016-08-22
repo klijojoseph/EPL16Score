@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 
 import com.lijojoseph.epl16score.R;
+import com.lijojoseph.epl16score.utils.EPLConstants;
 
 /**
  * Created by bibin.b on 8/20/2016.
@@ -41,6 +42,7 @@ public class FragmentWicket extends DialogFragment {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EPLConstants.currentBatsMan = bowlerAutoTxt.getText().toString();
                 FragmentWicket.this.dismiss();
             }
         });
