@@ -13,6 +13,7 @@ import android.widget.Spinner;
 
 import com.lijojoseph.epl16score.MainActivity;
 import com.lijojoseph.epl16score.R;
+import com.lijojoseph.epl16score.db.tables.TableBall;
 import com.lijojoseph.epl16score.utils.EPLConstants;
 
 import java.util.ArrayList;
@@ -93,7 +94,7 @@ public class FragmentGameSelector extends Fragment {
                 EPLConstants.innings_01_Bowling = bowlingTeam.getSelectedItem().toString();
                 EPLConstants.innings_02_Bowling = battingTeam.getSelectedItem().toString();
 
-             //   EPLConstants.clearAll();
+                TableBall.onDatadelete();
                 FragmentMainScoreBoard.MatchInnings innings = new FragmentMainScoreBoard.MatchInnings();
                 innings.setInningsNumber(EPLConstants.FIRST_INNINGS);
                 innings.setOvers(Integer.parseInt(over.getSelectedItem().toString()));

@@ -55,7 +55,11 @@ public class TableBall extends DbTable {
         sqLiteDatabase.execSQL(createQuery);
     }
 
-    public ArrayList<Ball> populateData(){
+    public static void onDatadelete(){
+        getDB().execSQL("DELETE FROM "+TABLE_NAME);
+    }
+
+    public ArrayList<Ball> populateAllData(){
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
         Cursor cursor      = getDB().rawQuery(selectQuery, null);
         ArrayList<Ball> list = new ArrayList<>();
@@ -90,6 +94,44 @@ public class TableBall extends DbTable {
         return list;
     }
 
+    public ArrayList<Ball> populatePlayerTeamData(String columnName ,String batMan){
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME+" WHERE "+columnName+" = '"+batMan+"'";
+        System.out.println("Query : "+selectQuery);
+        Cursor cursor      = getDB().rawQuery(selectQuery, null);
+        ArrayList<Ball> list = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                Ball ball = new Ball();
+                ball.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+                ball.setOver(cursor.getInt(cursor.getColumnIndex(COLUMN_OVER)));
+                ball.setInngsNo(cursor.getInt(cursor.getColumnIndex(COLUMN_INNGSNO)));
+                ball.setBallNo(cursor.getInt(cursor.getColumnIndex(COLUMN_BALLNO)));
+                ball.setTakenRun(cursor.getInt(cursor.getColumnIndex(COLUMN_TAKENRUN)));
+                ball.setExtra(cursor.getInt(cursor.getColumnIndex(COLUMN_EXTRA)));
+
+                ball.setWicket((cursor.getInt(cursor.getColumnIndex(COLUMN_WICKET)))==1?true:false);
+                ball.setNOBall((cursor.getInt(cursor.getColumnIndex(COLUMN_NOBALL)))==1?true:false);
+                ball.setPhase((cursor.getInt(cursor.getColumnIndex(COLUMN_PHASE)))==1?true:false);
+                ball.setChance((cursor.getInt(cursor.getColumnIndex(COLUMN_CHANCE)))==1?true:false);
+                ball.setWide((cursor.getInt(cursor.getColumnIndex(COLUMN_WIDE)))==1?true:false);
+
+                ball.setBowler(cursor.getString(cursor.getColumnIndex(COLUMN_BOWLER_NAME)));
+                ball.setBatsman(cursor.getString(cursor.getColumnIndex(COLUMN_BATSMAN_NAME)));
+                ball.setBowlerTeam(cursor.getString(cursor.getColumnIndex(COLUMN_BOWLING_TEAM)));
+                ball.setBatsmenTeam(cursor.getString(cursor.getColumnIndex(COLUMN_BATTING_TEAM)));
+                ball.setGameDtae(cursor.getString(cursor.getColumnIndex(COLUMN_GAME_DATE)));
+
+                list.add(ball);
+            } while (cursor.moveToNext());
+        }
+        System.out.println();
+        cursor.close();
+        return list;
+    }
+
+
+
 public void insertIntoDB(Ball ball){
     beingExecute();
 
@@ -107,7 +149,7 @@ public void insertIntoDB(Ball ball){
     values.put(COLUMN_BOWLER_NAME, ball.getBowler());
     values.put(COLUMN_BATSMAN_NAME, ball.getBatsman());
     values.put(COLUMN_BOWLING_TEAM, ball.getBowlerTeam());
-    values.put(COLUMN_BATSMAN_NAME, ball.getBatsmenTeam());
+    values.put(COLUMN_BATTING_TEAM, ball.getBatsmenTeam());
     values.put(COLUMN_GAME_DATE, ball.getGameDtae());
 
     getDB().insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);

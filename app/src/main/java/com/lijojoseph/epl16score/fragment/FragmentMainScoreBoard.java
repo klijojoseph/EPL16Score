@@ -12,8 +12,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lijojoseph.epl16score.MainActivity;
 import com.lijojoseph.epl16score.R;
+import com.lijojoseph.epl16score.db.DbHelperClass;
 import com.lijojoseph.epl16score.db.tables.TableBall;
 import com.lijojoseph.epl16score.popup_fragments.FragmentInningsOneEnd;
 import com.lijojoseph.epl16score.popup_fragments.FragmentMatchEnd;
@@ -194,7 +194,7 @@ public class FragmentMainScoreBoard extends Fragment {
             wickets.setText("" + EPLConstants.innings_01_currentTotalWickets);
             if(innings.getOvers()== EPLConstants.innings_01_currentOver
                     || EPLConstants.innings_01_currentTotalWickets == innings.getOvers()){
-                MiscUtils.setReportToMail(tableBall.populateData(),innings,getContext());
+//                MiscUtils.setReportToMail(tableBall.populateAllData(),innings,getContext());
                 runs.setText(""+0 );
                 over.setText(""+0);
                 balls.setText(""+0 );
@@ -233,7 +233,8 @@ public class FragmentMainScoreBoard extends Fragment {
             if(innings.getOvers()== EPLConstants.innings_02_currentOver
                     || EPLConstants.innings_02_currentTotalRuns > EPLConstants.innings_01_currentTotalRuns
                     || EPLConstants.innings_02_currentTotalWickets == innings.getOvers()){
-                MiscUtils.setReportToMail(tableBall.populateData(),innings,getContext());
+                DbHelperClass.exportDB(getContext());
+                MiscUtils.setReportToMail(tableBall,innings,getContext());
                 runs.setText(""+0 );
                 over.setText(""+0);
                 balls.setText(""+0 );
