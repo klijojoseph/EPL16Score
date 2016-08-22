@@ -1,6 +1,7 @@
 package com.lijojoseph.epl16score.utils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by lijo.j on 19-Aug-2016.
@@ -9,6 +10,8 @@ public class EPLConstants {
 
     public static final int FIRST_INNINGS = 1;
     public static final int SECOND_INNINGS = 2;
+
+    public static int matchNumber = 1;
 
     public static String innings_01_Batting ="";
     public static String innings_02_Batting ="";
@@ -32,6 +35,9 @@ public class EPLConstants {
     public static int innings_02_currentTotalWickets = 0;
 
     public static ArrayList<String> chanceList = new ArrayList<>();
+
+    public static Calendar calendar = Calendar.getInstance();
+
 
     public static void clearAll(){
 

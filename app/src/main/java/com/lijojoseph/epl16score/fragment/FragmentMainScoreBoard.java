@@ -12,15 +12,19 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lijojoseph.epl16score.MainActivity;
 import com.lijojoseph.epl16score.R;
+import com.lijojoseph.epl16score.db.tables.TableBall;
 import com.lijojoseph.epl16score.popup_fragments.FragmentInningsOneEnd;
 import com.lijojoseph.epl16score.popup_fragments.FragmentMatchEnd;
 import com.lijojoseph.epl16score.popup_fragments.FragmentNoball;
 import com.lijojoseph.epl16score.popup_fragments.FragmentOverChange;
 import com.lijojoseph.epl16score.popup_fragments.FragmentWicket;
 import com.lijojoseph.epl16score.utils.EPLConstants;
+import com.lijojoseph.epl16score.utils.MiscUtils;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by lijo.j on 19-Aug-2016.
@@ -34,6 +38,8 @@ public class FragmentMainScoreBoard extends Fragment {
     private TextView balls;
     private  TextView teamName;
     private PopupWindow popupWindow;
+    private TableBall tableBall;
+    private MatchInnings innings;
 
 
     public static FragmentMainScoreBoard newInstance(MatchInnings innings) {
@@ -44,18 +50,27 @@ public class FragmentMainScoreBoard extends Fragment {
         return fragment;
     }
 
+    public MatchInnings getInnings() {
+        return innings;
+    }
+
+    public void setInnings(MatchInnings innings) {
+        this.innings = innings;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_score_board, container, false);
         final MatchInnings innings = (MatchInnings) getArguments().getSerializable(INNINGS_TAG);
-
+        setInnings(innings);
         teamName = (TextView) root.findViewById(R.id.teamname_txt);
         runs = (TextView) root.findViewById(R.id.totalrun_txt);
         wickets = (TextView) root.findViewById(R.id.totalwkt_txt);
         over = (TextView) root.findViewById(R.id.totalover_txt);
         balls = (TextView) root.findViewById(R.id.totalball_txt);
         popupWindow = new PopupWindow(getContext());
+        tableBall = new TableBall();
 
         final Button zeroRun = (Button) root.findViewById(R.id.run0_btn);
         final Button oneRun = (Button) root.findViewById(R.id.run1_btn);
@@ -76,25 +91,28 @@ public class FragmentMainScoreBoard extends Fragment {
         zeroRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                insertRunScoreIntoDB(innings,0);
                 updateScore(innings,0,false,false);
             }
         });
         oneRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                insertRunScoreIntoDB(innings,1);
                 updateScore(innings,1,false,false);
             }
         });
         twoRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                insertRunScoreIntoDB(innings,2);
                 updateScore(innings,2,false,false);
             }
         });
         fourRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                insertRunScoreIntoDB(innings,4);
                 updateScore(innings,4,false,false);
             }
         });
@@ -102,6 +120,7 @@ public class FragmentMainScoreBoard extends Fragment {
         wideButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                insertExtraScoreIntoDB(innings,0,1,true,false,false,false,false);
                 updateScore(innings,1,false,true);
             }
         });
@@ -109,13 +128,13 @@ public class FragmentMainScoreBoard extends Fragment {
         wicketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                insertExtraScoreIntoDB(innings,0,0,false,false,false,false,true);
                 updateScore(innings,0,true,false);
                 FragmentWicket.newInstance().show(getChildFragmentManager(), null);
             }
         });
 
-//Noball button click :Bibin Babu
+
         noballButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,6 +152,7 @@ public class FragmentMainScoreBoard extends Fragment {
                     wicketButton.performClick();
                 }else{
                     EPLConstants.chanceList.add(EPLConstants.currentBatsMan);
+                    insertExtraScoreIntoDB(innings,0,0,false,false,false,true,false);
                     updateScore(innings,0,false,false);
                 }
             }
@@ -145,6 +165,7 @@ public class FragmentMainScoreBoard extends Fragment {
             public void onClick(View view) {
 //phase ball warnning:bibin
                 mediaPlayer.start();
+                insertExtraScoreIntoDB(innings,0,0,false,false,true,false,false);
                 Toast.makeText(getContext(), "Phase ball", Toast.LENGTH_SHORT).show();
             }
         });
@@ -173,6 +194,7 @@ public class FragmentMainScoreBoard extends Fragment {
             wickets.setText("" + EPLConstants.innings_01_currentTotalWickets);
             if(innings.getOvers()== EPLConstants.innings_01_currentOver
                     || EPLConstants.innings_01_currentTotalWickets == innings.getOvers()){
+                MiscUtils.setReportToMail(tableBall.populateData(),innings,getContext());
                 runs.setText(""+0 );
                 over.setText(""+0);
                 balls.setText(""+0 );
@@ -188,6 +210,7 @@ public class FragmentMainScoreBoard extends Fragment {
                 innings.setOvers(innings.getOvers());
                 innings.setTeam01(EPLConstants.innings_02_Batting);
                 innings.setTeam02(EPLConstants.innings_02_Bowling);
+
                 teamName.setText(innings.getTeam01());
 //remove over change fragment and place it in Innings fragment:bibin
             }
@@ -210,15 +233,16 @@ public class FragmentMainScoreBoard extends Fragment {
             if(innings.getOvers()== EPLConstants.innings_02_currentOver
                     || EPLConstants.innings_02_currentTotalRuns > EPLConstants.innings_01_currentTotalRuns
                     || EPLConstants.innings_02_currentTotalWickets == innings.getOvers()){
-                runs.setText("" );
-                over.setText("");
-                balls.setText("" );
-                wickets.setText("");
-             /*   String winner="";
-                if(EPLConstants.innings_01_currentTotalRuns > EPLConstants.innings_02_currentTotalRuns)
-                    winner = EPLConstants.innings_01_Batting;
-                else
-                    winner = EPLConstants.innings_02_Batting;*/
+                MiscUtils.setReportToMail(tableBall.populateData(),innings,getContext());
+                runs.setText(""+0 );
+                over.setText(""+0);
+                balls.setText(""+0 );
+                wickets.setText(""+0);
+//                String winner="";
+//                if(EPLConstants.innings_01_currentTotalRuns > EPLConstants.innings_02_currentTotalRuns)
+//                    winner = EPLConstants.innings_01_Batting;
+//                else
+//                    winner = EPLConstants.innings_02_Batting;*/
                 FragmentMatchEnd.newInstance().show(getFragmentManager(),null);
               /*  Toast.makeText(FragmentMainScoreBoard.this.getContext(),
                         "Match End ,Winner : "+winner,
@@ -228,6 +252,64 @@ public class FragmentMainScoreBoard extends Fragment {
             //    EPLConstants.clearAll();
             }
         }
+    }
+
+    public void insertRunScoreIntoDB(MatchInnings innings,int runsTaken){
+        TableBall.Ball ball = new TableBall.Ball();
+        ball.setInngsNo(innings.getInningsNumber());
+        if(innings.getInningsNumber() == EPLConstants.FIRST_INNINGS) {
+            ball.setOver(EPLConstants.innings_01_currentOver);
+            ball.setBallNo(EPLConstants.innings_01_currentBall);
+
+        }else if(innings.getInningsNumber() == EPLConstants.SECOND_INNINGS){
+            ball.setOver(EPLConstants.innings_02_currentOver);
+            ball.setBallNo(EPLConstants.innings_02_currentBall);
+        }
+        ball.setTakenRun(runsTaken);
+        ball.setExtra(0);
+
+        ball.setWicket(false);
+        ball.setNOBall(false);
+        ball.setPhase(false);
+        ball.setChance(false);
+        ball.setWide(false);
+
+        ball.setBowler(EPLConstants.currentBowler);
+        ball.setBatsman(EPLConstants.currentBatsMan);
+        ball.setBowlerTeam(innings.team02);
+        ball.setBatsmenTeam(innings.team01);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        ball.setGameDtae(simpleDateFormat.format(EPLConstants.calendar.getTime()));
+        tableBall.insertIntoDB(ball);
+    }
+
+    public void insertExtraScoreIntoDB(MatchInnings innings,int runsTaken,int extraRun,boolean wide,boolean noball,boolean phase,boolean chance,boolean wicket){
+        TableBall.Ball ball = new TableBall.Ball();
+        ball.setInngsNo(innings.getInningsNumber());
+        if(innings.getInningsNumber() == EPLConstants.FIRST_INNINGS) {
+            ball.setOver(EPLConstants.innings_01_currentOver);
+            ball.setBallNo(EPLConstants.innings_01_currentBall);
+
+        }else if(innings.getInningsNumber() == EPLConstants.SECOND_INNINGS){
+            ball.setOver(EPLConstants.innings_02_currentOver);
+            ball.setBallNo(EPLConstants.innings_02_currentBall);
+        }
+        ball.setTakenRun(runsTaken);
+        ball.setExtra(extraRun);
+
+        ball.setWicket(wicket);
+        ball.setNOBall(noball);
+        ball.setPhase(phase);
+        ball.setChance(chance);
+        ball.setWide(wide);
+
+        ball.setBowler(EPLConstants.currentBowler);
+        ball.setBatsman(EPLConstants.currentBatsMan);
+        ball.setBowlerTeam(innings.team02);
+        ball.setBatsmenTeam(innings.team01);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        ball.setGameDtae(simpleDateFormat.format(EPLConstants.calendar.getTime()));
+        tableBall.insertIntoDB(ball);
     }
 
     public static class MatchInnings implements Serializable {

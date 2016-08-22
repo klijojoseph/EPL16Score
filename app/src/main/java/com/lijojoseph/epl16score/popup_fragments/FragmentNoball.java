@@ -55,6 +55,7 @@ public class FragmentNoball extends DialogFragment {
                 getMainScoreCard().updateScore((FragmentMainScoreBoard.MatchInnings)
                         FragmentNoball.this.getParentFragment().getArguments().getSerializable(FragmentMainScoreBoard.INNINGS_TAG),
                         0,false,true);
+                getMainScoreCard().insertExtraScoreIntoDB(getMainScoreCard().getInnings(),0,1,false,true,false,false,false);
                 FragmentNoball.this.dismiss();
             }
         });
@@ -65,6 +66,7 @@ public class FragmentNoball extends DialogFragment {
                 getMainScoreCard().updateScore((FragmentMainScoreBoard.MatchInnings)
                                 FragmentNoball.this.getParentFragment().getArguments().getSerializable(FragmentMainScoreBoard.INNINGS_TAG),
                                 1,false,true);
+                getMainScoreCard().insertExtraScoreIntoDB(getMainScoreCard().getInnings(),1,1,false,true,false,false,false);
                 FragmentNoball.this.dismiss();
             }
         });
@@ -75,6 +77,7 @@ public class FragmentNoball extends DialogFragment {
                 getMainScoreCard().updateScore((FragmentMainScoreBoard.MatchInnings)
                                 FragmentNoball.this.getParentFragment().getArguments().getSerializable(FragmentMainScoreBoard.INNINGS_TAG),
                                 2,false,true);
+                getMainScoreCard().insertExtraScoreIntoDB(getMainScoreCard().getInnings(),2,1,false,true,false,false,false);
                 FragmentNoball.this.dismiss();
             }
         });
@@ -85,6 +88,7 @@ public class FragmentNoball extends DialogFragment {
                 getMainScoreCard().updateScore((FragmentMainScoreBoard.MatchInnings)
                                 FragmentNoball.this.getParentFragment().getArguments().getSerializable(FragmentMainScoreBoard.INNINGS_TAG),
                                 4,false,true);
+                getMainScoreCard().insertExtraScoreIntoDB(getMainScoreCard().getInnings(),3,1,false,true,false,false,false);
                 FragmentNoball.this.dismiss();
             }
         });

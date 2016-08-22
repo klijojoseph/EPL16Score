@@ -45,7 +45,7 @@ public class FragmentGameSelector extends Fragment {
         bowlingTeam.setAdapter(bowlingTeamAdapter);
 
         ArrayList<String> overList = new ArrayList<>();
-        for(int i=5;i<=12;i++)
+        for(int i=2;i<=12;i++)
             overList.add(""+i);
         ArrayAdapter<String> overAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, overList);
         overAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
