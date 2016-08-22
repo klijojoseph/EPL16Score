@@ -89,12 +89,14 @@ public class FragmentGameSelector extends Fragment {
         startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                TableBall.onDatadelete();
+                EPLConstants.clearAll();
                 EPLConstants.innings_01_Batting = battingTeam.getSelectedItem().toString();
                 EPLConstants.innings_02_Batting = bowlingTeam.getSelectedItem().toString();
                 EPLConstants.innings_01_Bowling = bowlingTeam.getSelectedItem().toString();
                 EPLConstants.innings_02_Bowling = battingTeam.getSelectedItem().toString();
 
-                TableBall.onDatadelete();
+
                 FragmentMainScoreBoard.MatchInnings innings = new FragmentMainScoreBoard.MatchInnings();
                 innings.setInningsNumber(EPLConstants.FIRST_INNINGS);
                 innings.setOvers(Integer.parseInt(over.getSelectedItem().toString()));

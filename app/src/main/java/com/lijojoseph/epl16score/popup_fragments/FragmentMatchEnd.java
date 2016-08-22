@@ -49,17 +49,15 @@ public class FragmentMatchEnd extends  DialogFragment {
 
         team1.setText(EPLConstants.innings_01_Batting+"-"+EPLConstants.innings_01_currentTotalRuns+"/"+EPLConstants.innings_01_currentTotalWickets);
         team2.setText(EPLConstants.innings_02_Batting+"-"+EPLConstants.innings_02_currentTotalRuns+"/"+EPLConstants.innings_02_currentTotalWickets);
-okButton.setOnClickListener(new View.OnClickListener() {
+        okButton.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         FragmentMatchEnd.this.dismiss();
-        EPLConstants.clearAll();
         ((MainActivity)getActivity()).replaceFragment(FragmentGameSelector.newInstance());
-
 
     }
 });
-        EPLConstants.clearAll();
+
         return root;
 
     }

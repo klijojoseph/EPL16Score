@@ -130,7 +130,13 @@ public class FragmentMainScoreBoard extends Fragment {
             public void onClick(View view) {
                 insertExtraScoreIntoDB(innings,0,0,false,false,false,false,true);
                 updateScore(innings,0,true,false);
-                FragmentWicket.newInstance().show(getChildFragmentManager(), null);
+                if(innings.getInningsNumber()==EPLConstants.FIRST_INNINGS) {
+                    if (EPLConstants.innings_01_currentTotalWickets != innings.getOvers())
+                        FragmentWicket.newInstance().show(getChildFragmentManager(), null);
+                }else if(innings.getInningsNumber()==EPLConstants.SECOND_INNINGS) {
+                    if (EPLConstants.innings_01_currentTotalWickets != innings.getOvers())
+                        FragmentWicket.newInstance().show(getChildFragmentManager(), null);
+                }
             }
         });
 
@@ -185,7 +191,8 @@ public class FragmentMainScoreBoard extends Fragment {
             if (EPLConstants.innings_01_currentBall == 6) {
                 EPLConstants.innings_01_currentBall = 0;
                 EPLConstants.innings_01_currentOver++;
-                if(EPLConstants.innings_01_currentOver != innings.getOvers())
+                if(EPLConstants.innings_01_currentOver != innings.getOvers()
+                        && EPLConstants.innings_01_currentTotalWickets != innings.getOvers() )
                 FragmentOverChange.newInstace().show(getFragmentManager(), null);
             }
             runs.setText("" + EPLConstants.innings_01_currentTotalRuns);
@@ -223,7 +230,8 @@ public class FragmentMainScoreBoard extends Fragment {
             if (EPLConstants.innings_02_currentBall == 6) {
                 EPLConstants.innings_02_currentBall = 0;
                 EPLConstants.innings_02_currentOver++;
-                if(EPLConstants.innings_02_currentOver != innings.getOvers())
+                if(EPLConstants.innings_02_currentOver != innings.getOvers()
+                        && EPLConstants.innings_02_currentTotalWickets != innings.getOvers())
                 FragmentOverChange.newInstace().show(getFragmentManager(), null);
             }
             runs.setText("" + EPLConstants.innings_02_currentTotalRuns);
